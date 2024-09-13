@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href='{% static "css/styles.css" %}' rel="stylesheet">
+    <title>RCRUD</title>
+</head>
+<body>
+
+    <header>
+        <div class="header__superior">
+            <div class="logo">
+                <img src="{% static "imagenes/logotipo.jpg" %}" alt="logotipo">
+            </div>
+            <div>
+                {% block head %}    {% endblock %}
+            </div>
+            <div class="search">
+                <input type="search" placeholder="¿Qué deseas buscar?">
+            </div>
+        </div>    
+
+        <div class="container__menu">
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/tasks">Tasks</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="/logout">Logout</a></li>
+                        {% else %}
+                        <li><a href="/signin">Login</a></li>
+                        <li><a href="/signup">Registrarse</a></li>
+                        {% endif %}
+                    </ul>
+    
+                </nav>
+            </div>
+        </div>
+        <div class="cuerpo">
+            {% block content %}
+    
+            {% endblock %}
+        </div>
+    </header>
+    
+</body>
+</html>
+
+
+
+
